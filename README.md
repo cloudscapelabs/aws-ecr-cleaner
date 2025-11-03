@@ -43,7 +43,7 @@ use `map[string]struct{}` to mitigate the risk.
 ECR cleaner is designed to be used as an AWS Lambda container image. The Lambda can be triggered by AWS EventBridge
 Schedule (we use `cron(0 0 * * ? *)`)
 
-You can use our docker image `ghcr.io/devopsbox-io/aws-ecr-cleaner:v0.2.0` (replace the tag with another version when
+You can use our docker image `ghcr.io/devopsbox-io/aws-ecr-cleaner:v0.2.1` (replace the tag with another version when
 appropriate) or build your own image downloading the binary in your Dockerfile (Set the `ECR_CLEANER_SHA256`
 and `ECR_CLEANER_VERSION` variables appropriately):
 
@@ -132,11 +132,11 @@ the process - it is perfectly normal.
 ### Generating mocks
 
 ```shell
-mockgen -source=internal/pkg/aws/apprunner.go -destination=internal/pkg/aws/apprunner_mock.go -package=aws
-mockgen -source=internal/pkg/aws/ecr.go -destination=internal/pkg/aws/ecr_mock.go -package=aws
-mockgen -source=internal/pkg/aws/ecs.go -destination=internal/pkg/aws/ecs_mock.go -package=aws
-mockgen -source=internal/pkg/aws/lambda.go -destination=internal/pkg/aws/lambda_mock.go -package=aws
-mockgen -source=internal/pkg/aws/ssm.go -destination=internal/pkg/aws/ssm_mock.go -package=aws
+go tool mockgen -source=internal/pkg/aws/apprunner.go -destination=internal/pkg/aws/apprunner_mock.go -package=aws
+go tool mockgen -source=internal/pkg/aws/ecr.go -destination=internal/pkg/aws/ecr_mock.go -package=aws
+go tool mockgen -source=internal/pkg/aws/ecs.go -destination=internal/pkg/aws/ecs_mock.go -package=aws
+go tool mockgen -source=internal/pkg/aws/lambda.go -destination=internal/pkg/aws/lambda_mock.go -package=aws
+go tool mockgen -source=internal/pkg/aws/ssm.go -destination=internal/pkg/aws/ssm_mock.go -package=aws
 ```
 
 ### Running unit tests with coverage

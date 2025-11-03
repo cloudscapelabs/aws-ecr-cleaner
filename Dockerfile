@@ -1,4 +1,4 @@
-FROM golang:1.19 AS build
+FROM golang:1.24 AS build
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
     upx \
