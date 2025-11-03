@@ -55,8 +55,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-ENV ECR_CLEANER_SHA256=b2be75392eb7cb382cb9a4a9308b3026d248dd90b33bec6c54a53f1f3e4a5303 \
-    ECR_CLEANER_VERSION=0.2.0
+ENV ECR_CLEANER_SHA256=ed9a1d8bb760e669063b7c08ea68ac2bf5640e6857fd1240cc4511aea9568cf3 \
+    ECR_CLEANER_VERSION=0.2.1
 RUN curl -L https://github.com/devopsbox-io/aws-ecr-cleaner/releases/download/v${ECR_CLEANER_VERSION}/aws-ecr-cleaner-${ECR_CLEANER_VERSION}-linux-amd64 \
         -o /usr/local/bin/aws-ecr-cleaner && \
     echo "${ECR_CLEANER_SHA256} /usr/local/bin/aws-ecr-cleaner" | sha256sum --check && \
